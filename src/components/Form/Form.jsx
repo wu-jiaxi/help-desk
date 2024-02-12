@@ -18,10 +18,25 @@ const TicketForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Send formData to backend
-    console.log(formData);
+    try {
+      const response = await fetch("/tickets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("Ticket submitted successfully");
+        // Reset form data if needed
+      } else {
+        console.error("Failed to submit ticket");
+      }
+    } catch (error) {
+      console.error("Error submitting ticket", error);
+    }
   };
 
   return (
