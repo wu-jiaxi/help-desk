@@ -23,6 +23,7 @@ const TicketForm = () => {
     e.preventDefault();
     try {
       alert("submitted");
+      //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
       await axios.post("http://localhost:3001/api/tickets", {
         formData,
       });

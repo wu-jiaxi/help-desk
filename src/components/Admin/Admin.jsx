@@ -10,7 +10,7 @@ function Admin() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(""); // Replace '/api/data' with your actual backend API endpoint
+      const response = await axios.get("http://localhost:3001/api/tickets"); // Replace '/api/data' with your actual backend API endpoint
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

@@ -16,22 +16,21 @@ app.use(function (req, res, next) {
   );
   next();
 });
+let formDataStorage = [];
 
 // Routes
-app.post("", (req, res) => {
-  const formData = req.body;
-  // Process form data here
-  console.log("WE ARE HERE", formData);
-  // Send response
-  res.sendStatus(200); // or whatever appropriate status
-});
 
 app.post("/api/tickets", (req, res) => {
-  const formData = req.body;
+  const formData = req.body.formData;
+  formDataStorage.push(formData);
   // Here you would typically process the form data, such as saving it to a database
   console.log("Received form data:", formData);
   // Respond with a success message
   res.status(200).send("Ticket submitted successfully.");
+});
+
+app.get("/api/tickets", (req, res) => {
+  res.json(formDataStorage);
 });
 
 // Start server
