@@ -1,6 +1,7 @@
 // Main Page (End User Submission Form)
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../Form/Form.css";
 
 const TicketForm = () => {
@@ -21,19 +22,10 @@ const TicketForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/tickets", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      alert("submitted");
+      await axios.post("http://localhost:3000", {
+        formData,
       });
-      if (response.ok) {
-        console.log("Ticket submitted successfully");
-        // Reset form data if needed
-      } else {
-        console.error("Failed to submit ticket");
-      }
     } catch (error) {
       console.error("Error submitting ticket", error);
     }
@@ -41,7 +33,7 @@ const TicketForm = () => {
 
   return (
     <div id="form-container">
-      <form onSubmit={handleSubmit} id="form">
+      <form onSubmit={handleSubmit} action="POST" id="form">
         <input
           type="text"
           name="name"
