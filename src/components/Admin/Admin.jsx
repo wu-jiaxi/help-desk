@@ -20,11 +20,12 @@ function Admin() {
 
   return (
     <div>
-      <h1>My Data</h1>
       <ul>
+        <h1>My Data</h1>
         {data.map((item) => (
           <li key={item.id}>
             <div id="itemDescription">
+              <div>{item.id}</div>
               <div className="itemStyles">{item.name}</div>
               <div className="itemStyles">{item.email}</div>
               <div className="itemStyles">{item.description}</div>

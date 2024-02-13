@@ -3,9 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../Form/Form.css";
+import { useParams } from "react-router-dom";
 
 const TicketForm = () => {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
+    id: Math.random(),
     name: "",
     email: "",
     description: "",
@@ -36,6 +39,7 @@ const TicketForm = () => {
     <div id="form-container">
       <form onSubmit={handleSubmit} action="POST" id="form">
         <input
+          id={Math.random()}
           type="text"
           name="name"
           value={formData.name}
