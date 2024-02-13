@@ -1,10 +1,30 @@
-import { Route, Link } from "react-router-dom";
-import Form from "../Form/Form";
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // You might need to install axios using npm or yarn
 
 function Admin() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(""); // Replace '/api/data' with your actual backend API endpoint
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <div>
-      <h1>Admin Panel</h1>
+      <h1>My Data</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
