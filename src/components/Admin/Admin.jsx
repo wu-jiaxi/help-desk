@@ -4,6 +4,7 @@ import "../Admin/Admin.css";
 
 function Admin() {
   const [data, setData] = useState([]);
+  const [expandedItemId, setExpandedItemId] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -27,18 +28,36 @@ function Admin() {
     }
   };
 
+  const toggleItem = (id) => {
+    setExpandedItemId((prevId) => (prevId === id ? null : id));
+  };
+
+  const handleResponseClick = (event) => {
+    // Prevent click event from bubbling up to the parent list item
+    event.stopPropagation();
+  };
+
   return (
     <div>
       <ul>
         <h1>My Data</h1>
         {data.map((item) => (
-          <li key={item.id}>
+          <li key={item.id} onClick={() => toggleItem(item.id)}>
             <div id="itemDescription">
               <div className="itemStyles">{item.name}</div>
               <div className="itemStyles">{item.email}</div>
               <div className="itemStyles">{item.description}</div>
               <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
+            {expandedItemId === item.id && (
+              <div>
+                <textarea
+                  onClick={handleResponseClick}
+                  placeholder="Your response"
+                ></textarea>
+                <button>Send</button>
+              </div>
+            )}
           </li>
         ))}
       </ul>
