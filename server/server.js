@@ -30,6 +30,22 @@ app.post("/api/tickets", (req, res) => {
   console.log("here is post", formDataStorage);
 });
 
+app.put("/api/tickets/:id", (req, res) => {
+  const id = req.params.id;
+  const status = req.body.status;
+
+  const index = formDataStorage.findIndex((item) => item.id === id);
+
+  if (index !== -1) {
+    formDataStorage[index].status = status;
+    console.log("Ticket status updated successfully.");
+    res.status(200).send("Ticket status updated successfully.");
+  } else {
+    console.log("Ticket not found.");
+    res.status(404).send("Ticket not found.");
+  }
+});
+
 app.delete("/api/tickets/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
