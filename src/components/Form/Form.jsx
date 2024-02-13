@@ -23,7 +23,7 @@ const TicketForm = () => {
     e.preventDefault();
     try {
       alert("submitted");
-      await axios.post("http://localhost:3000", {
+      await axios.post("http://localhost:3001", {
         formData,
       });
     } catch (error) {
