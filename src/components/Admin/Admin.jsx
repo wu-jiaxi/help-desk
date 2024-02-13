@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // You might need to install axios using npm or yarn
+import "../Admin/Admin.css";
 
 function Admin() {
   const [data, setData] = useState([]);
@@ -22,7 +23,13 @@ function Admin() {
       <h1>My Data</h1>
       <ul>
         {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>
+            <div id="itemDescription">
+              <div className="itemStyles">{item.name}</div>
+              <div className="itemStyles">{item.email}</div>
+              <div className="itemStyles">{item.description}</div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
