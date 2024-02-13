@@ -18,6 +18,15 @@ function Admin() {
     }
   };
 
+  const removeItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/tickets/${id}`);
+      setData(data.filter((item) => item.id !== id)); // Update the state to remove the item
+    } catch (error) {
+      console.error("Error removing item:", error);
+    }
+  };
+
   return (
     <div>
       <ul>
@@ -25,10 +34,10 @@ function Admin() {
         {data.map((item) => (
           <li key={item.id}>
             <div id="itemDescription">
-              <div>{item.id}</div>
               <div className="itemStyles">{item.name}</div>
               <div className="itemStyles">{item.email}</div>
               <div className="itemStyles">{item.description}</div>
+              <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
           </li>
         ))}

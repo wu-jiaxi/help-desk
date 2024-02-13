@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../Form/Form.css";
 import { useParams } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const TicketForm = () => {
-  const { id } = useParams();
   const [formData, setFormData] = useState({
-    id: Math.random(),
     name: "",
     email: "",
     description: "",
@@ -26,9 +25,10 @@ const TicketForm = () => {
     e.preventDefault();
     try {
       alert("submitted");
+      const newFormData = { ...formData, id: uuidv4() };
       //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
       await axios.post("http://localhost:3001/api/tickets", {
-        formData,
+        formData: newFormData,
       });
     } catch (error) {
       console.error("Error submitting ticket", error);

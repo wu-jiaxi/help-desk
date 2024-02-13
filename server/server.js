@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 //prevent cors errors
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -27,10 +27,29 @@ app.post("/api/tickets", (req, res) => {
   console.log("Received form data:", formData);
   // Respond with a success message
   res.status(200).send("Ticket submitted successfully.");
+  console.log("here is post", formDataStorage);
+});
+
+app.delete("/api/tickets/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  console.log("Delete request received for ID:", id);
+  console.log("showing delete formdata", formDataStorage);
+  const index = formDataStorage.findIndex((item) => item.id);
+  console.log("index", index);
+  if (index !== -1) {
+    formDataStorage.splice(index, 1);
+    console.log("Ticket deleted successfully.");
+    res.status(200).send("Ticket deleted successfully.");
+  } else {
+    console.log("Ticket not found.");
+    res.status(404).send("Ticket not found.");
+  }
 });
 
 app.get("/api/tickets", (req, res) => {
   res.json(formDataStorage);
+  console.log("here is get", formDataStorage);
 });
 
 // Start server
