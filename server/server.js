@@ -1,4 +1,3 @@
-// Server Setup
 import express from "express";
 import cors from "cors";
 const app = express();
@@ -25,9 +24,9 @@ let formDataStorage = [];
 app.post("/api/tickets", (req, res) => {
   const formData = req.body.formData;
   formDataStorage.push(formData);
-  // Here you would typically process the form data, such as saving it to a database
+
   console.log("Received form data:", formData);
-  // Respond with a success message
+
   res.status(200).send("Ticket submitted successfully.");
   console.log("here is post", formDataStorage);
 });
@@ -70,5 +69,4 @@ app.get("/api/tickets", (req, res) => {
   console.log("here is get", formDataStorage);
 });
 
-// Start server
 app.listen(port, () => console.log(`Server running on port ${port}`));

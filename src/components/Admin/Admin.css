@@ -5,8 +5,8 @@
 }
 
 ul {
-  list-style-type: none; /* Remove default bullet points */
-  padding: 0; /* Remove default padding */
+  list-style-type: none;
+  padding: 0;
 }
 
 #itemBorderStyle {
@@ -17,12 +17,12 @@ ul {
 
 #heading-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 #heading {
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
 
 #drillDownButton {

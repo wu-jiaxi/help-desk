@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "../Admin/Admin.css";
 
@@ -37,14 +37,13 @@ function Admin() {
   };
 
   const handleStatusClick = (event) => {
-    // Prevent click event from propagating to the parent list item
     event.stopPropagation();
   };
 
   const handleStatusChange = async (id, status) => {
     try {
       await axios.put(`http://localhost:3001/api/tickets/${id}`, { status });
-      // Update the status in the local state
+
       setData(
         data.map((item) => (item.id === id ? { ...item, status } : item))
       );

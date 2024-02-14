@@ -4,9 +4,11 @@ import "../Layout/Layout.css";
 const Layout = () => {
   return (
     <>
+      <div id="Zealthy">
+        <h1>Zealthy</h1>
+      </div>
       <nav id="tabs">
         <ul>
-          <li>Zealthy</li>
           <li className="test">
             <Link to="/" className="link">
               Form

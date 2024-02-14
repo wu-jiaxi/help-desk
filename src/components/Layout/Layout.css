@@ -1,12 +1,8 @@
-/* Layout.css */
-
-/* Reset margin and padding for the body */
 body {
   margin: 0;
   padding: 0;
 }
 
-/* Style only the #tabs container within Layout */
 #tabs {
   padding: 10px;
 }
@@ -16,18 +12,18 @@ ul {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: space-between; /* Adjust as needed */
+  justify-content: space-between;
 }
 
 .test {
-  width: 100px; /* Set a fixed width for the tabs */
-  text-align: center; /* Center the text within the tabs */
-  color: white; /* Set text color to white */
-  text-decoration: none; /* Remove underline */
+  width: 100px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
 }
 
 #tabs ul li:first-child {
-  cursor: default; /* or cursor: pointer; */
+  cursor: default;
 }
 
 #tabs ul {
@@ -70,4 +66,9 @@ Outlet {
 .link {
   color: white; /* Set link color to white */
   text-decoration: none; /* Remove underlines */
+}
+
+#Zealthy {
+  display: flex;
+  justify-content: center;
 }
