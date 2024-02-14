@@ -1,4 +1,3 @@
-// Main Page (End User Submission Form)
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -29,6 +28,14 @@ const TicketForm = () => {
       //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
       await axios.post("http://localhost:3001/api/tickets", {
         formData: newFormData,
+      });
+
+      // Reset form fields after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        description: "",
+        attachment: null,
       });
     } catch (error) {
       console.error("Error submitting ticket", error);

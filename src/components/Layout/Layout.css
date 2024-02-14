@@ -1,21 +1,13 @@
-#id {
-  display: flex;
-  flex-direction: column;
-}
-
-#test {
-  font-size: 50px;
-}
-
 /* Layout.css */
 
+/* Reset margin and padding for the body */
 body {
   margin: 0;
   padding: 0;
 }
 
+/* Style only the #tabs container within Layout */
 #tabs {
-  background-color: #f0f0f0;
   padding: 10px;
 }
 
@@ -23,13 +15,54 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
 }
 
 .test {
-  display: inline-block;
+  width: 100px; /* Set a fixed width for the tabs */
+  text-align: center; /* Center the text within the tabs */
+  color: white; /* Set text color to white */
+  text-decoration: none; /* Remove underline */
+}
+
+#tabs ul li:first-child {
+  cursor: default; /* or cursor: pointer; */
+}
+
+#tabs ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+#tabs .test {
   margin-right: 20px;
 }
 
 #form-container {
   padding: 20px;
+}
+
+.itemStyles {
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+Outlet {
+  flex: 1;
 }
