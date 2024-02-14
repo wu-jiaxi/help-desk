@@ -4,11 +4,6 @@
   margin-bottom: 15px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
 #itemBorderStyle {
   border: 2px solid #ccc;
   margin-bottom: 15px;

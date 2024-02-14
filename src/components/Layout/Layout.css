@@ -16,7 +16,7 @@ ul {
 }
 
 .test {
-  width: 100px;
+  width: 110px;
   text-align: center;
   color: white;
   text-decoration: none;
@@ -30,8 +30,6 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: space-around;
 }
 
 #tabs .test {
@@ -71,4 +69,8 @@ Outlet {
 #Zealthy {
   display: flex;
   justify-content: center;
+}
+
+#tabsUL {
+  width: 100;
 }
