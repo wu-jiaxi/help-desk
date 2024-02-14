@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import "../Form/Form.css";
-import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 const TicketForm = () => {
@@ -22,6 +20,17 @@ const TicketForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Perform input validation
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.description.trim()
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     try {
       alert("submitted");
       const newFormData = { ...formData, id: uuidv4() };
