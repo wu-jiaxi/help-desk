@@ -53,7 +53,12 @@ const TicketForm = () => {
 
   return (
     <div id="form-container">
-      <form onSubmit={handleSubmit} action="POST" id="form">
+      <form
+        onSubmit={handleSubmit}
+        action="POST"
+        id="form"
+        encType="multipart/form-data"
+      >
         <input
           id={Math.random()}
           type="text"
