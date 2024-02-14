@@ -55,14 +55,16 @@ function Admin() {
 
   return (
     <div>
-      <ul>
-        <h1>My Data</h1>
+      <ul id="itemDescription">
+        <div id="heading-container">
+          <h1 id="heading">My Data</h1>
+        </div>
         {data.map((item) => (
           <li key={item.id} onClick={() => toggleItem(item.id)}>
-            <div id="itemDescription">
-              <div className="itemStyles">{item.name}</div>
-              <div className="itemStyles">{item.email}</div>
-              <div className="itemStyles">{item.description}</div>
+            <div id="itemBorderStyle">
+              <div className="itemStyles">Name: {item.name}</div>
+              <div className="itemStyles">Email: {item.email}</div>
+              <div className="itemStyles">Description: {item.description}</div>
               <div className="itemStyles">
                 Status: {item.status}
                 <select

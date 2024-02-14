@@ -1,10 +1,24 @@
 #itemDescription {
   display: flex;
   flex-direction: column;
-  border: 2px solid #ccc;
   margin-bottom: 15px;
 }
 
 ul {
   list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+#itemBorderStyle {
+  border: 2px solid #ccc;
+}
+
+#heading-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#heading {
+  margin: 0; /* Remove default margin */
 }
