@@ -20,8 +20,7 @@ const TicketForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Perform input validation
+    // input validation
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
@@ -32,13 +31,13 @@ const TicketForm = () => {
     }
 
     try {
-      alert("submitted");
+      alert("Submitted");
       const newFormData = { ...formData, id: uuidv4() };
       //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
       await axios.post("http://localhost:3001/api/tickets", {
         formData: newFormData,
       });
-
+      //clear form after submitting
       setFormData({
         name: "",
         email: "",

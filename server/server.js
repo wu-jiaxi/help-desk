@@ -21,6 +21,7 @@ let formDataStorage = [];
 
 // Routes
 
+//route to create tickets from frontend to server
 app.post("/api/tickets", (req, res) => {
   const formData = req.body.formData;
   formDataStorage.push(formData);
@@ -31,6 +32,7 @@ app.post("/api/tickets", (req, res) => {
   console.log("here is post", formDataStorage);
 });
 
+//updates status from server
 app.put("/api/tickets/:id", (req, res) => {
   const id = req.params.id;
   const status = req.body.status;
@@ -46,7 +48,7 @@ app.put("/api/tickets/:id", (req, res) => {
     res.status(404).send("Ticket not found.");
   }
 });
-
+//deletes ticket from server
 app.delete("/api/tickets/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
@@ -63,7 +65,7 @@ app.delete("/api/tickets/:id", (req, res) => {
     res.status(404).send("Ticket not found.");
   }
 });
-
+//get tickets from server to show in Admin component
 app.get("/api/tickets", (req, res) => {
   res.json(formDataStorage);
   console.log("here is get", formDataStorage);

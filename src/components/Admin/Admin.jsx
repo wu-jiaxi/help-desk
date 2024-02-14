@@ -10,6 +10,7 @@ function Admin() {
     fetchData();
   }, []);
 
+  //get and display tickets sent from form component
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3001/api/tickets");
@@ -23,6 +24,7 @@ function Admin() {
     try {
       await axios.delete(`http://localhost:3001/api/tickets/${id}`);
       setData(data.filter((item) => item.id !== id));
+      console.log("Would normally send email here with body: …");
     } catch (error) {
       console.error("Error removing item:", error);
     }
@@ -31,15 +33,16 @@ function Admin() {
   const toggleItem = (id) => {
     setExpandedItemId((prevId) => (prevId === id ? null : id));
   };
-
+  //stops default behavior of opening one box when clicking another
   const handleResponseClick = (event) => {
     event.stopPropagation();
   };
-
+  //stops default behavior of opening one box when clicking another
   const handleStatusClick = (event) => {
     event.stopPropagation();
   };
 
+  //updates status
   const handleStatusChange = async (id, status) => {
     try {
       await axios.put(`http://localhost:3001/api/tickets/${id}`, { status });
@@ -56,7 +59,7 @@ function Admin() {
     <div>
       <ul id="itemDescription">
         <div id="heading-container">
-          <h1 id="heading">My Data</h1>
+          <h2 id="heading">Unanswered Tickets</h2>
         </div>
         {data.map((item) => (
           <li key={item.id} onClick={() => toggleItem(item.id)}>
