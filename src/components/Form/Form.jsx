@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "../Form/Form.css";
 import { v4 as uuidv4 } from "uuid";
@@ -39,7 +39,6 @@ const TicketForm = () => {
         formData: newFormData,
       });
 
-      // Reset form fields after successful submission
       setFormData({
         name: "",
         email: "",
@@ -83,9 +82,10 @@ const TicketForm = () => {
         <input
           type="file"
           name="attachment"
-          onChange={(e) =>
-            setFormData({ ...formData, attachment: e.target.files[0] })
-          }
+          onChange={(e) => {
+            console.log("File selected:", e.target.files[0]);
+            setFormData({ ...formData, attachment: e.target.files[0] });
+          }}
         />
         <button type="submit">Submit</button>
       </form>

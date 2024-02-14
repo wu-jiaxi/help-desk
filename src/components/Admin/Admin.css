@@ -11,6 +11,8 @@ ul {
 
 #itemBorderStyle {
   border: 2px solid #ccc;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 #heading-container {
@@ -21,4 +23,8 @@ ul {
 
 #heading {
   margin: 0; /* Remove default margin */
+}
+
+#drillDownButton {
+  margin-bottom: 10px;
 }

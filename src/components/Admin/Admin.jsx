@@ -80,12 +80,12 @@ function Admin() {
               <button onClick={() => removeItem(item.id)}>Remove</button>
             </div>
             {expandedItemId === item.id && (
-              <div>
+              <div id="drilldown">
                 <textarea
                   onClick={handleResponseClick}
                   placeholder="Your response"
                 ></textarea>
-                <button>Send</button>
+                <button id="drillDownButton">Send</button>
               </div>
             )}
           </li>
