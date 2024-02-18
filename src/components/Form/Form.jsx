@@ -43,18 +43,13 @@ const TicketForm = () => {
       await axios.post("https://helpdesk105.onrender.com/api/tickets", {
         formData: newFormData,
       });
-      await axios.post("https://helpdesk105.onrender.com/api/uploads", {
-        formData: newFormData,
-      });
       //clear form after submitting
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          description: "",
-          attachment: null,
-        });
-      }, 100);
+      setFormData({
+        name: "",
+        email: "",
+        description: "",
+        attachment: null,
+      });
     } catch (error) {
       console.error("Error submitting ticket", error);
     }
