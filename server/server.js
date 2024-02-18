@@ -23,6 +23,15 @@ let formDataStorage = [];
 // Routes
 
 //route to create tickets from frontend to server
+
+app.set("/", (req, res) => {
+  res.send("api is working");
+});
+
+app.post("/", (req, res) => {
+  res.send("api is working");
+});
+
 app.post("/api/tickets", (req, res) => {
   const formData = req.body.formData;
   formDataStorage.push(formData);
