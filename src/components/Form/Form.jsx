@@ -32,7 +32,13 @@ const TicketForm = () => {
 
     try {
       alert("Submitted");
-      const newFormData = { ...formData, id: uuidv4() };
+      const currentDate = new Date();
+      const formattedDate = currentDate.toLocaleString();
+      const newFormData = {
+        ...formData,
+        id: uuidv4(),
+        createdAt: formattedDate,
+      };
       //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
       await axios.post("http://localhost:3001/api/tickets", {
         formData: newFormData,

@@ -70,6 +70,7 @@ function Admin() {
                 <div className="itemStyles">
                   Description: {item.description}
                 </div>
+                <div className="itemStyles">Time Created: {item.createdAt}</div>
                 <div className="itemStyles">
                   Status: {item.status}
                   <select
