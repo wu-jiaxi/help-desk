@@ -1,5 +1,9 @@
 import express from "express";
 import cors from "cors";
+import multer from "multer";
+
+const upload = multer({ dest: "server/uploads" });
+
 const app = express();
 const port = 3001;
 
@@ -21,6 +25,9 @@ let formDataStorage = [];
 
 // Routes
 
+app.post("/api/uploads", upload.single("file"), (req, res) => {
+  res.send("upload successfully");
+});
 //route to create tickets from frontend to server
 app.post("/api/tickets", (req, res) => {
   const formData = req.body.formData;

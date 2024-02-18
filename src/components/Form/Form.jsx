@@ -37,6 +37,9 @@ const TicketForm = () => {
       await axios.post("http://localhost:3001/api/tickets", {
         formData: newFormData,
       });
+      await axios.post("http://localhost:3001/api/uploads", {
+        formData: newFormData,
+      });
       //clear form after submitting
       setFormData({
         name: "",
