@@ -61,37 +61,42 @@ function Admin() {
         <div id="heading-container">
           <h2 id="heading">Unanswered Tickets</h2>
         </div>
-        {data.map((item) => (
-          <li key={item.id} onClick={() => toggleItem(item.id)}>
-            <div id="itemBorderStyle">
-              <div className="itemStyles">Name: {item.name}</div>
-              <div className="itemStyles">Email: {item.email}</div>
-              <div className="itemStyles">Description: {item.description}</div>
-              <div className="itemStyles">
-                Status: {item.status}
-                <select
-                  value={item.status}
-                  onChange={(e) => handleStatusChange(item.id, e.target.value)}
-                  onClick={handleStatusClick}
-                >
-                  <option value="new">New</option>
-                  <option value="in progress">In Progress</option>
-                  <option value="resolved">Resolved</option>
-                </select>
+        {Array.isArray(data) &&
+          data.map((item) => (
+            <li key={item.id} onClick={() => toggleItem(item.id)}>
+              <div id="itemBorderStyle">
+                <div className="itemStyles">Name: {item.name}</div>
+                <div className="itemStyles">Email: {item.email}</div>
+                <div className="itemStyles">
+                  Description: {item.description}
+                </div>
+                <div className="itemStyles">
+                  Status: {item.status}
+                  <select
+                    value={item.status}
+                    onChange={(e) =>
+                      handleStatusChange(item.id, e.target.value)
+                    }
+                    onClick={handleStatusClick}
+                  >
+                    <option value="new">New</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="resolved">Resolved</option>
+                  </select>
+                </div>
+                <button onClick={() => removeItem(item.id)}>Remove</button>
               </div>
-              <button onClick={() => removeItem(item.id)}>Remove</button>
-            </div>
-            {expandedItemId === item.id && (
-              <div id="drilldown">
-                <textarea
-                  onClick={handleResponseClick}
-                  placeholder="Your response"
-                ></textarea>
-                <button id="drillDownButton">Send</button>
-              </div>
-            )}
-          </li>
-        ))}
+              {expandedItemId === item.id && (
+                <div id="drilldown">
+                  <textarea
+                    onClick={handleResponseClick}
+                    placeholder="Your response"
+                  ></textarea>
+                  <button id="drillDownButton">Send</button>
+                </div>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   );
