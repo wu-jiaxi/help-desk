@@ -57,10 +57,6 @@ button {
   margin-top: 10px;
 }
 
-Outlet {
-  flex: 1;
-}
-
 .link {
   color: white;
   text-decoration: none;
