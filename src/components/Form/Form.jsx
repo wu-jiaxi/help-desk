@@ -55,6 +55,7 @@ const TicketForm = () => {
         onSubmit={handleSubmit}
         action="POST"
         id="form"
+        name="form"
         encType="multipart/form-data"
       >
         <input
@@ -64,6 +65,7 @@ const TicketForm = () => {
           value={formData.name}
           onChange={handleChange}
           placeholder="Name"
+          autoComplete="name-field"
         />
         <input
           type="email"
@@ -71,12 +73,14 @@ const TicketForm = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
+          autoComplete="email-field"
         />
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
           placeholder="Description"
+          autoComplete="description-field"
         />
         <input
           type="file"
@@ -85,6 +89,7 @@ const TicketForm = () => {
             console.log("File selected:", e.target.files[0]);
             setFormData({ ...formData, attachment: e.target.files[0] });
           }}
+          autoComplete="image-field"
         />
         <button type="submit">Submit</button>
       </form>
