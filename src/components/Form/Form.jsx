@@ -40,19 +40,21 @@ const TicketForm = () => {
         createdAt: formattedDate,
       };
       //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
-      await axios.post("http://localhost:3001/api/tickets", {
+      await axios.post("https://helpdesk105.onrender.com/api/tickets", {
         formData: newFormData,
       });
-      await axios.post("http://localhost:3001/api/uploads", {
+      await axios.post("https://helpdesk105.onrender.com/api/uploads", {
         formData: newFormData,
       });
       //clear form after submitting
-      setFormData({
-        name: "",
-        email: "",
-        description: "",
-        attachment: null,
-      });
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          description: "",
+          attachment: null,
+        });
+      }, 100);
     } catch (error) {
       console.error("Error submitting ticket", error);
     }

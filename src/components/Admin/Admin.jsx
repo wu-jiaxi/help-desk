@@ -13,7 +13,9 @@ function Admin() {
   //get and display tickets sent from form component
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/tickets");
+      const response = await axios.get(
+        "https://helpdesk105.onrender.com/api/tickets"
+      );
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -22,7 +24,7 @@ function Admin() {
 
   const removeItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/tickets/${id}`);
+      await axios.delete(`https://helpdesk105.onrender.com/api/tickets/${id}`);
       setData(data.filter((item) => item.id !== id));
       console.log("Would normally send email here with body: …");
     } catch (error) {
@@ -45,7 +47,9 @@ function Admin() {
   //updates status
   const handleStatusChange = async (id, status) => {
     try {
-      await axios.put(`http://localhost:3001/api/tickets/${id}`, { status });
+      await axios.put(`https://helpdesk105.onrender.com/api/tickets/${id}`, {
+        status,
+      });
 
       setData(
         data.map((item) => (item.id === id ? { ...item, status } : item))
