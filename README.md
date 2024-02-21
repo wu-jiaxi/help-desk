@@ -1,5 +1,10 @@
 Help Desk Ticket Support System
 
+NOTE\*\*\*\*
+Since Heroku no longer offers a free tier, I've used Render to upload the backend server. However because I am using the free tier of Render, the service shuts down the server after 15 mins of inactivity
+
+https://docs.render.com/free
+
 MVP
 
 Front-end
