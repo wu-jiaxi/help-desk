@@ -1,5 +1,6 @@
+// src/components/Form.jsx
 import { useState } from "react";
-import axios from "axios";
+import { createTicket } from "../../services/api";
 import "../Form/Form.css";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,7 +21,6 @@ const TicketForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // input validation
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
@@ -37,13 +37,9 @@ const TicketForm = () => {
       const newFormData = {
         ...formData,
         id: uuidv4(),
-        createdAt: formattedDate,
+        created_at: formattedDate,
       };
-      //for express paths, its important to make sure "/api/tickets" and other paths match to the express routes in the server for passing data to work
-      await axios.post("https://helpdesk105.onrender.com/api/tickets", {
-        formData: newFormData,
-      });
-      //clear form after submitting
+      await createTicket(newFormData);
       setFormData({
         name: "",
         email: "",

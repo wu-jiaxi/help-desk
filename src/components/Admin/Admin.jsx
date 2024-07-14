@@ -1,5 +1,6 @@
+// src/components/Admin.jsx
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getTickets, deleteTicket, updateTicket } from "../../services/api";
 import "../Admin/Admin.css";
 
 function Admin() {
@@ -10,13 +11,10 @@ function Admin() {
     fetchData();
   }, []);
 
-  //get and display tickets sent from form component
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "https://helpdesk105.onrender.com/api/tickets"
-      );
-      setData(response.data);
+      const tickets = await getTickets();
+      setData(tickets);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -24,7 +22,7 @@ function Admin() {
 
   const removeItem = async (id) => {
     try {
-      await axios.delete(`https://helpdesk105.onrender.com/api/tickets/${id}`);
+      await deleteTicket(id);
       setData(data.filter((item) => item.id !== id));
       console.log("Would normally send email here with body: …");
     } catch (error) {
@@ -35,21 +33,18 @@ function Admin() {
   const toggleItem = (id) => {
     setExpandedItemId((prevId) => (prevId === id ? null : id));
   };
-  //stops default behavior of opening one box when clicking another
+
   const handleResponseClick = (event) => {
     event.stopPropagation();
   };
-  //stops default behavior of opening one box when clicking another
+
   const handleStatusClick = (event) => {
     event.stopPropagation();
   };
 
-  //updates status
   const handleStatusChange = async (id, status) => {
     try {
-      await axios.put(`https://helpdesk105.onrender.com/api/tickets/${id}`, {
-        status,
-      });
+      await updateTicket(id, { status });
 
       setData(
         data.map((item) => (item.id === id ? { ...item, status } : item))
@@ -74,7 +69,9 @@ function Admin() {
                 <div className="itemStyles">
                   Description: {item.description}
                 </div>
-                <div className="itemStyles">Time Created: {item.createdAt}</div>
+                <div className="itemStyles">
+                  Time Created: {item.created_at}
+                </div>
                 <div className="itemStyles">
                   Status: {item.status}
                   <select
